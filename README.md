@@ -1,8 +1,8 @@
 ---
 title: Raven RWKV 7B
-emoji: 📉
+emoji: 🚀
 colorFrom: blue
-colorTo: pink
+colorTo: green
 sdk: gradio
 sdk_version: 3.23.0
 app_file: app.py
