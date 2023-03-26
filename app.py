@@ -55,8 +55,6 @@ def evaluate(
 
     instruction = instruction.strip()
     input = input.strip()
-    if len(instruction) == 0:
-        return 'Error: please enter some instruction'
     ctx = generate_prompt(instruction, input)
     
     gpu_info = nvmlDeviceGetMemoryInfo(gpu_h)
@@ -91,9 +89,11 @@ def evaluate(
     yield out_str.strip()
 
 examples = [
-    ["Tell me about ravens.", 200, 1.0, 0.7, 0.2, 0.2],
-    ["Explain the following metaphor: Life is like cats.", 200, 1.0, 0.7, 0.2, 0.2],
-    ["Write a python function to read data from an excel file.", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Tell me about ravens.", "", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Explain the following metaphor: Life is like cats.", "", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Write a python function to read data from an excel file.", "", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Generate a list of adjectives that describe a person as brave.", "", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Arrange the given numbers in ascending order.", "2, 4, 0, 8, 3", 200, 1.0, 0.7, 0.2, 0.2],
 ]
 
 g = gr.Interface(
