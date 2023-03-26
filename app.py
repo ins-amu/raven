@@ -113,8 +113,8 @@ g = gr.Interface(
             label="Output",
         )
     ],
-    title=f"🐦Raven {title}",
-    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is trained on the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) dataset and more.",
+    title=f"🐦Raven - {title}",
+    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is finetuned on the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) dataset and more.",
     examples=examples,
     cache_examples=False,
 )
