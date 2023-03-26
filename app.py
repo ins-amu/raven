@@ -6,6 +6,16 @@ from pynvml import *
 nvmlInit()
 gpu_h = nvmlDeviceGetHandleByIndex(0)
 ctx_limit = 1024
+title = "RWKV-4-Pile-7B-Instruct-test4-20230326"
+
+os.environ["RWKV_JIT_ON"] = '1'
+os.environ["RWKV_CUDA_ON"] = '1' # if '1' then use CUDA kernel for seq mode (much faster)
+
+from rwkv.model import RWKV
+model_path = hf_hub_download(repo_id="BlinkDL/rwkv-4-pile-7b", filename=f"{title}.pth")
+model = RWKV(model=model_path, strategy='cuda fp16i8 *20 -> cuda fp16')
+from rwkv.utils import PIPELINE, PIPELINE_ARGS
+pipeline = PIPELINE(model, "20B_tokenizer.json")
 
 def generate_prompt(instruction, input=None):
     if input:
@@ -31,9 +41,9 @@ def generate_prompt(instruction, input=None):
 def evaluate(
     instruction,
     input=None,
+    token_count=200,
     temperature=1.0,
-    top_p=0.75,
-    max_new_tokens=200,
+    top_p=0.7,
     **kwargs,
 ):
     prompt = generate_prompt(instruction, input)
@@ -42,15 +52,11 @@ def evaluate(
 g = gr.Interface(
     fn=evaluate,
     inputs=[
-        gr.components.Textbox(
-            lines=2, label="Instruction", placeholder="Tell me about alpacas."
-        ),
+        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about alpacas."),
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
-        gr.components.Slider(minimum=0, maximum=1, value=1.0, label="Temperature"),
-        gr.components.Slider(minimum=0, maximum=1, value=0.75, label="Top p"),
-        gr.components.Slider(
-            minimum=1, maximum=256, step=1, value=200, label="Max tokens"
-        ),
+        gr.components.Slider(minimum=10, maximum=250, step=10, value=200),
+        gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0),
+        gr.components.Slider(minimum=0, maximum=1, step=0.05, value=0.7),
     ],
     outputs=[
         gr.inputs.Textbox(
