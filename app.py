@@ -89,11 +89,11 @@ def evaluate(
     yield out_str.strip()
 
 examples = [
-    ["Tell me about ravens.", "", 200, 1.0, 0.7, 0.2, 0.2],
-    ["Explain the following metaphor: Life is like cats.", "", 200, 1.0, 0.7, 0.2, 0.2],
-    ["Write a python function to read data from an excel file.", "", 200, 1.0, 0.7, 0.2, 0.2],
-    ["Generate a list of adjectives that describe a person as brave.", "", 200, 1.0, 0.7, 0.2, 0.2],
-    ["Arrange the given numbers in ascending order.", "2, 4, 0, 8, 3", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Tell me about ravens.", "", 200, 1.0, 0.6, 0.2, 0.2],
+    ["Explain the following metaphor: Life is like cats.", "", 200, 1.0, 0.6, 0.2, 0.2],
+    ["Write a python function to read data from an excel file.", "", 200, 1.0, 0.6, 0.2, 0.2],
+    ["Generate a list of adjectives that describe a person as brave.", "", 200, 1.0, 0.6, 0.2, 0.2],
+    ["What are the colors of these things?", "sun, moon, apple", 200, 1.0, 0.6, 0.2, 0.2],
 ]
 
 g = gr.Interface(
@@ -103,7 +103,7 @@ g = gr.Interface(
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
         gr.components.Slider(minimum=10, maximum=250, step=10, value=200), # token_count
         gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0), # temperature
-        gr.components.Slider(minimum=0, maximum=1, step=0.05, value=0.7), # top_p
+        gr.components.Slider(minimum=0, maximum=1, step=0.05, value=0.6), # top_p
         gr.components.Slider(0.0, 1.0, step=0.1, value=0.2),  # presencePenalty
         gr.components.Slider(0.0, 1.0, step=0.1, value=0.2),  # countPenalty        
     ],
@@ -114,7 +114,7 @@ g = gr.Interface(
         )
     ],
     title=f"🐦Raven {title}",
-    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) finetuned to follow instructions. It is trained on the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) dataset and more.",
+    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is trained on the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) dataset and more.",
     examples=examples,
     cache_examples=False,
 )
