@@ -13,7 +13,7 @@ os.environ["RWKV_CUDA_ON"] = '1' # if '1' then use CUDA kernel for seq mode (muc
 
 from rwkv.model import RWKV
 model_path = hf_hub_download(repo_id="BlinkDL/rwkv-4-pile-7b", filename=f"{title}.pth")
-model = RWKV(model=model_path, strategy='cuda fp16i8 *20 -> cuda fp16')
+model = RWKV(model=model_path, strategy='cuda fp16i8 *10 -> cuda fp16')
 from rwkv.utils import PIPELINE, PIPELINE_ARGS
 pipeline = PIPELINE(model, "20B_tokenizer.json")
 
@@ -55,6 +55,8 @@ def evaluate(
 
     instruction = instruction.strip()
     input = input.strip()
+    if len(instruction) == 0:
+        return 'Error: please enter some instruction'
     ctx = generate_prompt(instruction, input)
     
     gpu_info = nvmlDeviceGetMemoryInfo(gpu_h)
@@ -88,10 +90,16 @@ def evaluate(
     torch.cuda.empty_cache()
     yield out_str.strip()
 
+examples = [
+    ["Tell me about ravens.", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Explain the following metaphor: Life is like cats.", 200, 1.0, 0.7, 0.2, 0.2],
+    ["Write a python function to read data from an excel file.", 200, 1.0, 0.7, 0.2, 0.2],
+]
+
 g = gr.Interface(
     fn=evaluate,
     inputs=[
-        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about alpacas."),
+        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about ravens."),
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
         gr.components.Slider(minimum=10, maximum=250, step=10, value=200), # token_count
         gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0), # temperature
@@ -107,6 +115,8 @@ g = gr.Interface(
     ],
     title=f"🐦Raven {title}",
     description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) finetuned to follow instructions. It is trained on the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) dataset and more.",
+    examples=examples,
+    cache_examples=False,
 )
 g.queue(concurrency_count=1, max_size=10)
 g.launch(share=False)
