@@ -89,11 +89,11 @@ def evaluate(
     yield out_str.strip()
 
 examples = [
-    ["Tell me about ravens.", "", 200, 1.0, 0.5, 0.3, 0.3],
-    ["Explain the following metaphor: Life is like cats.", "", 200, 1.0, 0.5, 0.3, 0.3],
-    ["Write a python function to read data from an excel file.", "", 200, 1.0, 0.5, 0.3, 0.3],
-    ["Generate a list of adjectives that describe a person as brave.", "", 200, 1.0, 0.5, 0.3, 0.3],
-    ["What are the colors of these things?", "sun, moon, apple", 200, 1.0, 0.5, 0.3, 0.3],
+    ["Tell me about ravens.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Explain the following metaphor: Life is like cats.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Write a python function to read data from an excel file.", "", 150, 1.0, 0.5, 0.2, 0.2],
+    ["Generate a list of adjectives that describe a person as brave.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["What are the colors of these things?", "sun, moon, apple", 150, 1.0, 0.5, 0.4, 0.4],
 ]
 
 g = gr.Interface(
@@ -101,11 +101,11 @@ g = gr.Interface(
     inputs=[
         gr.components.Textbox(lines=2, label="Instruction", value="Tell me about ravens."),
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
-        gr.components.Slider(minimum=10, maximum=250, step=10, value=200), # token_count
+        gr.components.Slider(minimum=10, maximum=200, step=10, value=150), # token_count
         gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0), # temperature
         gr.components.Slider(minimum=0, maximum=1, step=0.05, value=0.5), # top_p
-        gr.components.Slider(0.0, 1.0, step=0.1, value=0.3),  # presencePenalty
-        gr.components.Slider(0.0, 1.0, step=0.1, value=0.3),  # countPenalty        
+        gr.components.Slider(0.0, 1.0, step=0.1, value=0.4),  # presencePenalty
+        gr.components.Slider(0.0, 1.0, step=0.1, value=0.4),  # countPenalty        
     ],
     outputs=[
         gr.inputs.Textbox(
