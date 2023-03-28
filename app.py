@@ -95,7 +95,7 @@ examples = [
     ["Write a story using the following information", "A man named Alex chops a tree down", 150, 1.0, 0.5, 0.4, 0.4],
     ["What are the colors of these things?", "sun, moon, apple", 150, 1.0, 0.5, 0.4, 0.4],
     ["Generate a list of adjectives that describe a person as brave.", "", 150, 1.0, 0.5, 0.4, 0.4],
-    ["You have $100, and your goal is to turn that into as much money as possible in the shortest time possible, without doing anything illegal. Please respond with detailed plan.", 150, 1.0, 0.5, 0.4, 0.4],
+    ["You have $100, and your goal is to turn that into as much money as possible in the shortest time possible, without doing anything illegal. Please respond with detailed plan.", "", 150, 1.0, 0.5, 0.4, 0.4],
 ]
 
 g = gr.Interface(
