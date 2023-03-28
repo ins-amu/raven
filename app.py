@@ -91,9 +91,11 @@ def evaluate(
 examples = [
     ["Tell me about ravens.", "", 150, 1.0, 0.5, 0.4, 0.4],
     ["Explain the following metaphor: Life is like cats.", "", 150, 1.0, 0.5, 0.4, 0.4],
-    ["Write a python function to read data from an excel file.", "", 150, 1.0, 0.5, 0.2, 0.2],
-    ["Generate a list of adjectives that describe a person as brave.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Write a python function to search on wikipedia by title", "", 150, 1.0, 0.5, 0.2, 0.2],
+    ["Write a story using the following information", "A man named Alex chops a tree down", 150, 1.0, 0.5, 0.4, 0.4],
     ["What are the colors of these things?", "sun, moon, apple", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Generate a list of adjectives that describe a person as brave.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["You have $100, and your goal is to turn that into as much money as possible in the shortest time possible, without doing anything illegal. Please respond with detailed plan.", 150, 1.0, 0.5, 0.4, 0.4],
 ]
 
 g = gr.Interface(
@@ -114,7 +116,7 @@ g = gr.Interface(
         )
     ],
     title=f"🐦Raven - {title}",
-    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is finetuned on the [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) dataset and more.",
+    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) 100% RNN [RWKV-LM](https://github.com/BlinkDL/RWKV-LM) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is finetuned on [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), codealpaca and more.",
     examples=examples,
     cache_examples=False,
 )
