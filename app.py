@@ -116,7 +116,7 @@ g = gr.Interface(
         )
     ],
     title=f"🐦Raven - {title}",
-    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) 100% RNN [RWKV-LM](https://github.com/BlinkDL/RWKV-LM) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is finetuned on [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), codealpaca and more.",
+    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) 100% RNN [RWKV-LM](https://github.com/BlinkDL/RWKV-LM) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is finetuned on [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), codealpaca and more. For best results, *** keep you prompt short and clear *** (don't use those wordy "You are xxxxx" ChatGPT-style prompts because such prompt styles are not in the training data yet).",
     examples=examples,
     cache_examples=False,
 )
