@@ -90,7 +90,7 @@ def evaluate(
 
 examples = [
     ["Tell me about ravens.", "", 150, 1.0, 0.5, 0.4, 0.4],
-    ["Write a python function to mine 1 BTC.", "", 150, 1.0, 0.5, 0.2, 0.2],
+    ["Write a python function to mine 1 BTC, with details and comments.", "", 150, 1.0, 0.5, 0.2, 0.2],
     ["Write a song about ravens.", "", 150, 1.0, 0.5, 0.4, 0.4],
     ["Explain the following metaphor: Life is like cats.", "", 150, 1.0, 0.5, 0.4, 0.4],
     ["Write a story using the following information", "A man named Alex chops a tree down", 150, 1.0, 0.5, 0.4, 0.4],
