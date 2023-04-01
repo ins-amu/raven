@@ -6,7 +6,7 @@ from pynvml import *
 nvmlInit()
 gpu_h = nvmlDeviceGetHandleByIndex(0)
 ctx_limit = 1024
-title = "RWKV-4-Pile-7B-Instruct-test5-20230329-ctx4096"
+title = "RWKV-4-Raven-7B-v6-Eng-20230331-ctx4096"
 
 os.environ["RWKV_JIT_ON"] = '1'
 os.environ["RWKV_CUDA_ON"] = '1' # if '1' then use CUDA kernel for seq mode (much faster)
