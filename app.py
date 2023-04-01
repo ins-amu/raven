@@ -6,13 +6,13 @@ from pynvml import *
 nvmlInit()
 gpu_h = nvmlDeviceGetHandleByIndex(0)
 ctx_limit = 1024
-title = "RWKV-4-Raven-7B-v6-Eng-20230331-ctx4096"
+title = "RWKV-4-Raven-7B-v6-Eng-20230401-ctx4096"
 
 os.environ["RWKV_JIT_ON"] = '1'
 os.environ["RWKV_CUDA_ON"] = '1' # if '1' then use CUDA kernel for seq mode (much faster)
 
 from rwkv.model import RWKV
-model_path = hf_hub_download(repo_id="BlinkDL/rwkv-4-pile-7b", filename=f"{title}.pth")
+model_path = hf_hub_download(repo_id="BlinkDL/rwkv-4-raven", filename=f"{title}.pth")
 model = RWKV(model=model_path, strategy='cuda fp16i8 *8 -> cuda fp16')
 from rwkv.utils import PIPELINE, PIPELINE_ARGS
 pipeline = PIPELINE(model, "20B_tokenizer.json")
