@@ -89,20 +89,20 @@ def evaluate(
     yield out_str.strip()
 
 examples = [
-    ["Tell me about ravens.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Tell me why a language model could benefit the field of systems neuroscience.", "", 300, 1.5, 0.5, 0.4, 0.4],
     ["Write a python function to mine 1 BTC, with details and comments.", "", 150, 1.0, 0.5, 0.2, 0.2],
-    ["Write a song about ravens.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Ecrit une chanson sur les pies.", "", 150, 1.0, 0.5, 0.4, 0.4],
     ["Explain the following metaphor: Life is like cats.", "", 150, 1.0, 0.5, 0.4, 0.4],
-    ["Write a story using the following information", "A man named Alex chops a tree down", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Ecrit une histoire avec l'information suivant:", "Nous irons au bois", 150, 1.0, 0.5, 0.4, 0.4],
     ["What are the colors of these things?", "sun, moon, apple", 150, 1.0, 0.5, 0.4, 0.4],
-    ["Generate a list of adjectives that describe a person as brave.", "", 150, 1.0, 0.5, 0.4, 0.4],
+    ["Generate a list of adjectives that describe a system which engages in predictive coding.", "", 150, 1.5, 0.5, 0.4, 0.4],
     ["You have $100, and your goal is to turn that into as much money as possible with systems neuroscience and free energy. Please respond with detailed plan.", "", 150, 1.0, 0.5, 0.4, 0.4],
 ]
 
 g = gr.Interface(
     fn=evaluate,
     inputs=[
-        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about ravens."),
+        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about neurons."),
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
         gr.components.Slider(minimum=10, maximum=1000, step=10, value=150), # token_count
         gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0), # temperature
