@@ -102,7 +102,7 @@ examples = [
 g = gr.Interface(
     fn=evaluate,
     inputs=[
-        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about neurons."),
+        gr.components.Textbox(lines=2, label="Instruction", value="Tell me about types of cells other than neurons in the brain."),
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
         gr.components.Slider(minimum=10, maximum=1000, step=10, value=150), # token_count
         gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0), # temperature
