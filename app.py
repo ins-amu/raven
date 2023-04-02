@@ -131,9 +131,9 @@ This is hosted at INS, not a cloud☁️.
 
 """,
     examples=examples,
-    cache_examples=True,
+    cache_examples=False,
     allow_flagging='manual',
-    flagging_options='incorrect irrelevant ambiguous'.split(' '),
+    flagging_options='OK incorrect irrelevant ambiguous'.split(' '),
     flagging_dir='/flagging',
 )
 g.queue(concurrency_count=3, max_size=30)
