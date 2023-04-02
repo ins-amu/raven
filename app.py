@@ -117,14 +117,18 @@ g = gr.Interface(
         )
     ],
     title=f"🐦Raven language model",
-    description="""Raven is [RWKV 7B model](https://github.com/BlinkDL/ChatRWKV) (app from [HF](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B) finetuned to follow instructions, examples below.
+    description="""Raven is [RWKV 7B model](https://github.com/BlinkDL/ChatRWKV)
+(app from [HF](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B)
+fine-tuned to follow instructions, hopefully to be fine tuned for neuroscience.
 
-For best results
-
-- keep you prompt short and clear 
+- keep you prompt short and clear, see examples below
 - (don't use those wordy 'You are xxxxx' ChatGPT-style prompts because such prompt styles are not in the training data yet).
 
-This is hosted at INS; suggestions welcome: open issues at github.com/ins-amu/raven.
+This is hosted at INS, not a cloud☁️.
+
+- use French but double check translations!
+- help improve: open issues at github.com/ins-amu/raven
+- Use it from Python scripts w/ the [API](https://raven.ins-amu.fr/?view=api).
 
 """,
     examples=examples,
