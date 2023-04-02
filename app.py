@@ -121,16 +121,20 @@ g = gr.Interface(
 
 - keep you prompt short and clear, see examples below
 - don't use those wordy 'You are xxxxx' ChatGPT-style prompts
+- please use Flag to provide feedback
 
 This is hosted at INS, not a cloud☁️.
 
 - use French but double check translations!
-- help improve: open issues at github.com/ins-amu/raven
+- open issues at github.com/ins-amu/raven
 - Use it from Python w/ the [API](https://raven.ins-amu.fr/?view=api).
 
 """,
     examples=examples,
-    cache_examples=False,
+    cache_examples=True,
+    allow_flagging='manual',
+    flagging_options='incorrect irrelevant ambiguous'.split(' '),
+    flagging_dir='/flagging',
 )
 g.queue(concurrency_count=3, max_size=30)
 g.launch(share=False, server_name='0.0.0.0')
