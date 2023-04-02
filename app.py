@@ -104,7 +104,7 @@ g = gr.Interface(
     inputs=[
         gr.components.Textbox(lines=2, label="Instruction", value="Tell me about ravens."),
         gr.components.Textbox(lines=2, label="Input", placeholder="none"),
-        gr.components.Slider(minimum=10, maximum=200, step=10, value=150), # token_count
+        gr.components.Slider(minimum=10, maximum=1000, step=10, value=150), # token_count
         gr.components.Slider(minimum=0.2, maximum=2.0, step=0.1, value=1.0), # temperature
         gr.components.Slider(minimum=0, maximum=1, step=0.05, value=0.5), # top_p
         gr.components.Slider(0.0, 1.0, step=0.1, value=0.4),  # presencePenalty
@@ -116,10 +116,17 @@ g = gr.Interface(
             label="Output",
         )
     ],
-    title=f"🐦Raven - {title}",
-    description="Raven is [RWKV 7B](https://github.com/BlinkDL/ChatRWKV) 100% RNN [RWKV-LM](https://github.com/BlinkDL/RWKV-LM) finetuned to follow instructions. *** Please try examples first (bottom of page) *** (edit them to use your question). Demo limited to ctxlen 1024. It is finetuned on [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca), codealpaca and more. For best results, *** keep you prompt short and clear *** (don't use those wordy 'You are xxxxx' ChatGPT-style prompts because such prompt styles are not in the training data yet).",
+    title=f"🐦Raven language model",
+    description="""Raven is [RWKV 7B model](https://github.com/BlinkDL/ChatRWKV) (app from [HF](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B) finetuned to follow instructions, examples below.
+
+For best results
+
+- keep you prompt short and clear 
+- (don't use those wordy 'You are xxxxx' ChatGPT-style prompts because such prompt styles are not in the training data yet).
+
+""",
     examples=examples,
     cache_examples=False,
 )
-g.queue(concurrency_count=1, max_size=10)
-g.launch(share=False)
+g.queue(concurrency_count=3, max_size=30)
+g.launch(share=False, server_name='0.0.0.0')
